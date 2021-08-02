@@ -1,0 +1,19 @@
+﻿@inherits LayoutComponentBase
+<!--LayoutComponentBase is the base class that defines the Rendering layout for components in Application-->
+
+<div class="page">
+    <div class="sidebar">
+        <!--The Razor Component which define Navigation Links for our components-->
+        <NavMenu />
+    </div>
+
+    <div class="main">
+        <div class="top-row px-4">
+            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        </div>
+
+        <div class="content px-4">
+            @Body
+        </div>
+    </div>
+</div>

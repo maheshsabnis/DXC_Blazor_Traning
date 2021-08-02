@@ -1,0 +1,73 @@
+﻿@page "/math"
+<h2>The Math Component</h2>
+
+<EditForm Model="@math">
+    <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <td>X</td>
+                <td>
+                    <InputNumber @bind-Value="@math.X" class="form-control"></InputNumber>
+                </td>
+            </tr>
+            <tr>
+                <td>Y</td>
+                <td>
+                    <InputNumber @bind-Value="@math.Y" class="form-control"></InputNumber>
+                </td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td>
+                    <InputNumber @bind-Value="@math.Res" class="form-control"></InputNumber>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <span>
+                        @math.X * @math.X 
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <input type="button" @onclick="@Add" class="btn btn-success" value="Add"/>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</EditForm>
+
+
+
+
+
+@code {
+    private MathObj math;
+    // define an instance of the math object in the initialization of the component
+
+
+    protected override void OnInitialized()
+    {
+        math = new MathObj();
+        base.OnInitialized();
+    }
+
+
+
+    void Add()
+    {
+
+        math.Res=math.X + math.Y;
+    }
+
+
+    public class MathObj
+    {
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Res { get; set; }
+    }
+}
