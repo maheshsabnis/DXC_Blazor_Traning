@@ -26,11 +26,17 @@ Thesre are the objects used to define execution behavaior of the .NET 5 types wh
 
 # Creating Component
 1. Standard Components
-	- InputText, InputNumber, InputCheck, InputRadio, InputTextArea, etc
+	- Microsoft.AspNetCore.Components
+		- ComponentBase
+			- INteractive UI Object Model with ready-to-use eco-system
+				- UI with Property-System and Event-System
+				- Property-System provides a mechanism to read/write data from and to the UI element
+					- Provides a familer experience like Server-side coding
+		, InputTextArea, etc
 		- Data Binding Attributes
 			- @bind-value="[Property-OF-THE-COMPONENT]"
 	- EditForm
-		- The Blazor 'form' component. This will map itself with HTML form
+		- The Blazor 'form' component. L form
 			- Model property, used to load and bind the CLR object aka entity class on Form
 			- The OnValidSubmit event to submit the form
 	- DataAnnotationValidator

@@ -1,7 +1,10 @@
 using Blasor_Serv.Data;
+using Blasor_Serv.Models;
+using Blasor_Serv.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,6 +28,13 @@ namespace Blasor_Serv
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CompanyContext>(options=> 
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("AppConnection"));
+            });
+            services.AddScoped<IService<Department, int>, DepartmentService>();
+            services.AddScoped<IService<Employee, int>, EmployeeService>();
+
             // To Provide the compilagtion for the Razor View (.razor files)
             services.AddRazorPages();
             // Manage the Server-Side Pre-Rendering of the Blazor Components

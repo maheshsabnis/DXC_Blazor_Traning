@@ -1,0 +1,66 @@
+﻿@page "/deptindex"
+@using Blasor_Serv.Models
+@using Blasor_Serv.Services
+
+@*/* The Navigation Manager Service to Navigate */*@
+@inject NavigationManager navigate
+
+@inject IService<Department,int> deptServ
+
+<h3>List of Department</h3>
+
+<input type="button" value="Add new Department" class="btn btn-danger" @onclick="@navigateToCreate"/>
+
+<div class="container">
+    <table class="table-bordered table table-striped">
+        <thead>
+            <tr>
+                <th>DeptNo</th>
+                <th>DeptName</th>
+                <th>Location</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var dept in departments)
+            {
+                <tr>
+                    <td>@dept.DeptNo</td>
+                    <td>@dept.DeptName</td>
+                    <td>@dept.Location</td>
+                    <td>
+                        <input type="button" value="Edit" class="btn btn-primary" 
+                               @onclick="@((evt)=>navigateToEdit(dept.DeptNo))" />
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+@code {
+    // private properties, those are scopped to the Current Component
+    // thse properties will be used for Binding with HTML elements for Read/Write operations
+    // also to generate HTML UI dynamically
+    List<Department> departments;
+    Department dept;
+
+    // using the Lifecycle method of the ComponentBase
+    protected override async Task OnInitializedAsync()
+    {
+        departments = new List<Department>();
+        var res = await deptServ.GetAsync();
+        departments = res.ToList();
+    }
+
+    void navigateToCreate()
+    {
+        navigate.NavigateTo("/deptcreate");
+    }
+
+    void navigateToEdit(int id)
+    {
+        navigate.NavigateTo($"/deptedit/{id}");
+    }
+
+}

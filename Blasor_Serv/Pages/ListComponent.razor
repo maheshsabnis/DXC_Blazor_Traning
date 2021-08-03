@@ -1,0 +1,22 @@
+﻿@page "/listcomponent"
+@using System.Text.Json;
+<h3>ListComponent</h3>
+<div class="container">
+    @foreach (var item in DataSource)
+    {
+       <span>@item</span>
+       <InputRadio Value="@item" Name="r"></InputRadio>
+    }
+</div>
+@code {
+    [Parameter]
+    public List<string> DataSource { get; set; }
+
+    protected override void OnInitialized()
+    {
+
+
+        this.StateHasChanged();
+        base.OnInitialized();
+    }
+}
