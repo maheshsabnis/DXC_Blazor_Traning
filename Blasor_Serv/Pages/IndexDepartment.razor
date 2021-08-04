@@ -1,6 +1,7 @@
 ﻿@page "/deptindex"
 @using Blasor_Serv.Models
 @using Blasor_Serv.Services
+@using System.Reflection
 
 @*/* The Navigation Manager Service to Navigate */*@
 @inject NavigationManager navigate
@@ -15,18 +16,22 @@
     <table class="table-bordered table table-striped">
         <thead>
             <tr>
-                <th>DeptNo</th>
-                <th>DeptName</th>
-                <th>Location</th>
+                 @foreach (var p in columns)
+                 {
+                     <th>@p</th>
+                 }
             </tr>
         </thead>
         <tbody>
             @foreach (var dept in departments)
             {
                 <tr>
-                    <td>@dept.DeptNo</td>
-                    <td>@dept.DeptName</td>
-                    <td>@dept.Location</td>
+                    @foreach(var col in columns)
+                    {
+                    <td>
+                        @dept.GetType().GetProperty(col).GetValue(dept,null)
+                    </td>
+                    }
                     <td>
                         <input type="button" value="Edit" class="btn btn-primary" 
                                @onclick="@((evt)=>navigateToEdit(dept.DeptNo))" />
@@ -44,11 +49,24 @@
     // also to generate HTML UI dynamically
     List<Department> departments;
     Department dept;
-
+    List<string> columns;
     // using the Lifecycle method of the ComponentBase
     protected override async Task OnInitializedAsync()
     {
         departments = new List<Department>();
+        dept = new Department();
+        columns = new List<string>();
+
+        // reading all properties of Department
+        PropertyInfo[] properties = dept.GetType().GetProperties(
+              BindingFlags.Public | BindingFlags.DeclaredOnly | BindingFlags.Instance
+            );
+
+        foreach (var prop in properties)
+        {
+            columns.Add(prop.Name);
+        }
+
         var res = await deptServ.GetAsync();
         departments = res.ToList();
     }

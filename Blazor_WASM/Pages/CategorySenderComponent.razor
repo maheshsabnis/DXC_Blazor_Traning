@@ -1,0 +1,48 @@
+﻿@page "/categorysender"
+@using Blazor_WASM.Models
+@*Injecting the State Service*@
+@inject AppStateContainer state
+@inject NavigationManager navigate
+
+<h3>Category Sender Component</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in categories)
+        { 
+            <tr @onclick="@(()=>SelectCategory(cat.CategoryId))">
+                <td>@cat.CategoryId</td>
+                <td>@cat.CategoryName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private Categories categories;
+
+    protected override void OnInitialized()
+    {
+        categories = new Categories();
+        // Subscribe to the Event of Global State Object using the Lifecycle hook for Statechange
+        state.OnStateChanged += StateHasChanged;
+
+    }
+
+    void SelectCategory(int id)
+    {
+        // newly selected Category Id to Global object
+        state.UpdateState(id);
+        //Navigate to Product Receiver
+      //  navigate.NavigateTo("/productreceiver");
+
+
+    }
+
+}

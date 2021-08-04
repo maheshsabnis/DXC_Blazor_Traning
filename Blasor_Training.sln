@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		readme1.md = readme1.md
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_WASM", "Blazor_WASM\Blazor_WASM.csproj", "{EB805198-97CF-4327-8911-C97B7F183C6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{AA5DDC5D-63D4-474E-8DF2-F205E1463912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA5DDC5D-63D4-474E-8DF2-F205E1463912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA5DDC5D-63D4-474E-8DF2-F205E1463912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB805198-97CF-4327-8911-C97B7F183C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB805198-97CF-4327-8911-C97B7F183C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB805198-97CF-4327-8911-C97B7F183C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB805198-97CF-4327-8911-C97B7F183C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

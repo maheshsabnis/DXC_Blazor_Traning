@@ -1,0 +1,60 @@
+﻿@page "/employeecomp"
+@using Blazor_WASM.Models
+
+
+<h3>Employee Compomnent</h3>
+<EditForm Model="@employee">
+    <div class="container">
+        <div class="form-group">
+            <label>EmpNo</label>
+            <InputNumber class="form-control" @bind-Value="@employee.EmpNo"></InputNumber>
+        </div>
+        <div class="form-group">
+            <label>Emp Name</label>
+            <InputText class="form-control" @bind-Value="@employee.EmpName"></InputText>
+        </div>
+        <div class="form-group">
+            <label>Department </label>
+            <InputSelect class="form-control" @bind-Value="@employee.DeptName">
+                @foreach (var d in departments)
+                {
+                    <option>@d</option>
+                }
+            </InputSelect>
+        </div>
+        <input type="button" class="btn btn-warning" value="Clear"  @onclick="@clear"/>
+        <input type="button" class="btn btn-success" value="Save" @onclick="@save"/>
+
+    </div>
+</EditForm>
+<hr/>
+@foreach (var emp in employees)
+{
+    <!--Subscribing to the Raised Event from Child Component-->
+    <EmployeeDetails employee="emp" OnEmployeeSelected="@receiveEmployee"></EmployeeDetails>
+}
+@code {
+    Employee employee;
+    Employees employees;
+    List<string> departments = new List<string>() {"IT", "HR","SL" };
+
+    protected override void OnInitialized()
+    {
+        employee = new Employee();
+        employees = new Employees();
+        base.OnInitialized();
+    }
+    void clear()
+    {
+        employee = new Employee();
+    }
+    void save()
+    {
+        employees.Add(employee);
+    }
+    void receiveEmployee(int id)
+    {
+        employee = employees.Where(e=>e.EmpNo==id).FirstOrDefault();
+    }
+
+}

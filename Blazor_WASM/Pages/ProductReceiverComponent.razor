@@ -1,0 +1,49 @@
+﻿@page "/productreceiver"
+@using Blazor_WASM.Models
+@inject AppStateContainer state 
+
+<h3>ProductReceiverComponent</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prd in filteredProducts)
+        {
+        <tr>
+            <td>@prd.ProductId</td>
+            <td>@prd.ProductName</td>
+
+            <td>@prd.CategoryId</td>
+        </tr>
+        }
+    </tbody>
+</table>
+@code { 
+
+    private Products products;
+    private List<Product> filteredProducts;
+    int CateId;
+
+    protected override void OnInitialized()
+    {
+        products = new Products();
+        filteredProducts = new List<Product>();
+        // SUbscribe to the Global State Service to Receivd the Latest State Value
+
+        CateId = state.ValueState;
+
+        if (CateId == 0)
+        {
+            filteredProducts = products;
+        }
+        else
+        {
+            filteredProducts = products.Where(p => p.CategoryId == CateId).ToList();
+        }
+    }
+}

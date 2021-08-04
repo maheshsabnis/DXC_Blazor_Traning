@@ -29,6 +29,30 @@ DataAnnotationValidator
 Component to validate the Form
 All component must be added in Pages Folder
 Right-Click-->Add-->Razor Component
+
+
+# Blazor Web Assembly App Development
+1. Calls to API
+2. Building Composit Application, i.e. Using Multiple Components at a time for Complex UI Apps
+	- Communication Across Components
+		- Components Knows Each other using Parent-Child Relationship
+			- The 'EventCallback<T>' object is used to emit an event from Child Component to Parenty Component
+				- T is Event Type Payload, the type of data to be emitted
+
+		- Components are now knowing each other
+	- Using Browser's State
+		- LocalStorage and Sesion Storage
+	- State Management across Components w/o using browser's resources
+	- Templates for Components for reusability
+	- Lazy Loading of Components
+3. Managing Application Security
+	- UserName and Password
+	- Using Azure AD
+
+
+
+
+
 Hands-on-Tasks
 Date: 02-08-2021 Create a component like Windows Calculator
 Date: 03-08-2021 
@@ -38,3 +62,8 @@ Date: 03-08-2021
 		- Use Reflection to read Properties from Department class
 	- Modify the ListDepartment Component to Delete the Table Row to delete the Department. Make sure that, the Delete button is disabled if the department contains Employees
 	- Show all Departments in sorted order of the DeptName
+Date : 04-08-2021
+	- Manage the Applicaiton State in Blazor WASM Standalone app to maintain the state for selected products from Category so that the enduser can select products to be purchased with Quantities. The Product Component should show list of Products for selected category with the Unit Price. The PurchaseComponent will allow enduser to select compoejnt from the ProductList and will allows user to enter quantity. This compoennt will calcluate total price. The TotalBillComponent will sholw list of all products purchased by enduser and will show the total bill by showing list of Products purchased.
+	- CategoryComponent, ProductComponent, PurchaseComponent, TotalBillCOmponent
+	- AppStateContainer
+		- List<Purchase> is the State that will show List of all Products purchased

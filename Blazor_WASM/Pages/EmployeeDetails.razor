@@ -1,0 +1,35 @@
+﻿@using Blazor_WASM.Models
+<h3>Employee Details</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>EmpNo</th>
+            <th>EmpName</th>
+            <th>DempName</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr @onclick="@SelectEmployee">
+            <td>@employee.EmpNo</td>
+            <td>@employee.EmpName</td>
+            <td>@employee.DeptName</td>
+        </tr>
+    </tbody>
+
+</table>
+
+
+
+
+
+
+@code {
+    [Parameter]public Employee employee { get; set; }
+    [Parameter] public EventCallback<int> OnEmployeeSelected { get; set; }
+
+    async void SelectEmployee()
+    {
+        // raise and emitting the event by invoking it
+        await OnEmployeeSelected.InvokeAsync(employee.EmpNo);
+    }
+}
