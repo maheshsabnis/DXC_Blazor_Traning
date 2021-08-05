@@ -1,0 +1,40 @@
+﻿@page "/deptlistproxy"
+@using ClientNS
+@using System.Text.Json
+@inject HttpClient httpClient
+
+<h3>Dept List Component</h3>
+
+<button @onclick="@loadData">Get All Departments</button>
+<br />
+<strong>
+    The Data Received from the API is : <br />
+    @JsonSerializer.Serialize(departments)
+</strong>
+ 
+
+
+@code {
+    List<Department> departments;
+    Department department;
+    string responseStatus;
+    ClientProxy proxy;
+
+    protected override async Task OnInitializedAsync()
+    {
+        departments = new List<Department>();
+        department = new Department();
+        proxy = new ClientProxy("http://localhost:64061/", httpClient);
+        await loadData();
+
+    }
+
+    async Task loadData()
+    {
+
+        var res = await proxy.GetallAsync();
+        departments = res.ToList();
+    }
+
+    
+}

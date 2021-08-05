@@ -7,7 +7,8 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-
+using Blazored.LocalStorage;
+using Blazored.SessionStorage;
 namespace Blazor_WASM
 {
     public class Program
@@ -22,6 +23,10 @@ namespace Blazor_WASM
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
             // Register the Object as Singleton
             builder.Services.AddScoped<AppStateContainer>();
+            // Register Storage Services For the Browser
+            builder.Services.AddBlazoredSessionStorage();
+
+
             // Applicartion Build so that the execution (Running) will start in browser
             await builder.Build().RunAsync();
         }

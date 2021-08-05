@@ -1,0 +1,51 @@
+﻿@page "/deptlist"
+@using SharedLib 
+@using System.Text.Json
+@inject HttpClient httpClient
+
+<h3>Dept List Component</h3>
+
+<button @onclick="@loadData">Get All Departments</button>
+<br/>
+<strong>
+    The Data Received from the API is : <br/>
+    @JsonSerializer.Serialize(departments)
+</strong>
+<hr />
+<button @onclick="@save">Create New Department</button>
+
+
+@code {
+    List<Department> departments;
+    Department department;
+    string responseStatus;
+
+    protected override async Task OnInitializedAsync()
+    {
+        departments = new List<Department>();
+        department = new Department();
+        await loadData();
+
+    }
+
+    async Task loadData()
+    {
+
+        departments = await httpClient.GetFromJsonAsync<List<Department>>("http://localhost:64061/department/getall");
+    }
+
+    async Task save()
+    {
+        department = new Department()
+        {
+            DeptNo = 4505,DeptName="Dept_4505", Location="Hyderabad"
+        };
+
+        var message = await httpClient.PostAsJsonAsync<Department>("http://localhost:64061/department/create", department);
+        if (message.StatusCode ==  System.Net.HttpStatusCode.OK|| message.StatusCode ==  System.Net.HttpStatusCode.Created)
+        {
+            responseStatus = "Data is Saved Successfully";
+        }
+
+    }
+}

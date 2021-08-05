@@ -1,0 +1,62 @@
+﻿@page "/productstoragereceiver"
+@using Blazor_WASM.Models
+@using System.Text.Json 
+@*Inject the SessionStorage Service*@
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+
+<h3>Product Receiver Component USing Browser's Storage'</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product Id</th>
+            <th>Product Name</th>
+            <th>Category Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var prd in filteredProducts)
+        {
+            <tr>
+                <td>@prd.ProductId</td>
+                <td>@prd.ProductName</td>
+
+                <td>@prd.CategoryId</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <strong>
+                    @JsonSerializer.Serialize(cat)
+                </strong>
+            </td>
+        </tr>
+    </tfoot>
+</table>
+@code {
+
+    private Products products;
+    private List<Product> filteredProducts;
+    int CateId;
+    private Category cat;
+    protected override async Task OnInitializedAsync()
+    {
+        products = new Products();
+        filteredProducts = new List<Product>();
+        // SUbscribe to the Global State Service to Receivd the Latest State Value
+
+        if (await sessionStorage.ContainKeyAsync("catid") == false)
+        {
+            CateId = 0;
+            filteredProducts = products;
+        }
+        else
+        {
+            CateId = Convert.ToInt32(await sessionStorage.GetItemAsStringAsync("catid"));
+            filteredProducts = products.Where(p => p.CategoryId == CateId).ToList();
+        }
+        // Read Object data from the session Storage
+         cat = await sessionStorage.GetItemAsync<Category>("cat");
+    }
+}

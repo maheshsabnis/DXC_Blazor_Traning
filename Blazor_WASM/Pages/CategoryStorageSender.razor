@@ -1,0 +1,51 @@
+﻿@page "/categorystoragesender"
+@using Blazor_WASM.Models
+ 
+@inject NavigationManager navigate
+@*Inject the SessionStorage Service*@
+@inject Blazored.SessionStorage.ISessionStorageService sessionStorage
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
+<h3>Category Sender Component Using Browser's Storage'</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cat in categories)
+        {
+            <tr @onclick="@(()=>SelectCategory(cat.CategoryId))">
+                <td>@cat.CategoryId</td>
+                <td>@cat.CategoryName</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private Categories categories;
+
+    protected override void OnInitialized()
+    {
+        categories = new Categories();
+       
+
+    }
+
+    void SelectCategory(int id)
+    {
+        // saving the CategoryId as string
+        sessionStorage.SetItemAsStringAsync("catid", id.ToString());
+        // saving a complete Category Data
+        sessionStorage.SetItemAsync<Category>("cat", categories.Where(c=>c.CategoryId==id).FirstOrDefault());
+        //Navigate to Product Receiver
+           navigate.NavigateTo("/productstoragereceiver");
+
+
+    }
+
+}

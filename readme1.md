@@ -42,6 +42,13 @@ Right-Click-->Add-->Razor Component
 		- Components are now knowing each other
 	- Using Browser's State
 		- LocalStorage and Sesion Storage
+			- Use the same Origin Policy, they are instantiated for the DOmain from which the page is loaded in browser 
+		- Balzored.LocalStorage
+			- Maintain the  state of data even after the browser is closed 
+			- This data will be available for next sesion for the same origin
+		- Blazored.SesionStoreage
+			- Volatile for a browser's instance. When the Browser is closed the LocalStorage will be cleaned
+		- These packages must be registred at application level	
 	- State Management across Components w/o using browser's resources
 	- Templates for Components for reusability
 	- Lazy Loading of Components
@@ -67,3 +74,9 @@ Date : 04-08-2021
 	- CategoryComponent, ProductComponent, PurchaseComponent, TotalBillCOmponent
 	- AppStateContainer
 		- List<Purchase> is the State that will show List of all Products purchased
+Date : 05-08-2021
+1. Complete the Full-Stack Application using the ASP.NET COre 5 API and the Blazor WebAsembly Application with following Check Points
+	- The CReate and Update COmponent for Department and Employee Must Validate the Inputs
+		- Hint: Use <DataAnnotatiosValidator/> component and <ValidationSummary/> component in side EditForm
+	- The Delete of Department must be Prohibited if there are Employees available for Deprtment. Show the Error Message for Delete Not Possible (Optional)
+	- Modify the Department Table with the column as 'Capacity' as integer, while adding Employee in the department, if the capacity of Employees in the department is full, then generate erroir message from server and render it to client
