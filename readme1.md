@@ -52,6 +52,18 @@ Right-Click-->Add-->Razor Component
 	- State Management across Components w/o using browser's resources
 	- Templates for Components for reusability
 	- Lazy Loading of Components
+		- The Lazy Loading is an approach where the Blazor WAMS will mark the libraries as lazyloaded so that the browser knows when to provide process for execution for all components of them
+			- Microsoft.AspNetCore.Components.WebAssembly.Services namespace which provides 
+				the LazyAssemblyLoader class to manage elazy loading
+					 - LoadAssembliesAsync() methis is used to load assermbly at run time in navigation context of the WASM application	   
+		- Create a new Razor Class LIbrary Application
+			- Add a Razor Component and write the required logic with HTML UI
+			- Add the reference of the Project in Blazor WASM project
+		- Modify the Project file of Blazor WASM to specify the RAzor Library will be loaded as lazy assembly
+			- <ItemGroup>
+		<BlazorWebAssemblyLazyLoad Include="Product_LazyLoad.dll"></BlazorWebAssemblyLazyLoad>
+	</ItemGroup>	
+
 3. Managing Application Security
 	- UserName and Password
 	- Using Azure AD
@@ -80,3 +92,5 @@ Date : 05-08-2021
 		- Hint: Use <DataAnnotatiosValidator/> component and <ValidationSummary/> component in side EditForm
 	- The Delete of Department must be Prohibited if there are Employees available for Deprtment. Show the Error Message for Delete Not Possible (Optional)
 	- Modify the Department Table with the column as 'Capacity' as integer, while adding Employee in the department, if the capacity of Employees in the department is full, then generate erroir message from server and render it to client
+Date :06-08-2021
+1. From the WASM project, seperate the logic for Employee Operations by handling it in separate Razor library by creating New Employee component in it. Lazy Load this library in WAS Application

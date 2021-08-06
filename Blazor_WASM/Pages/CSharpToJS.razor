@@ -1,0 +1,55 @@
+﻿@page "/cstojs"
+
+@using System.Text.Json 
+
+
+<h3>CSharpToJS</h3>
+
+@code {
+    /// <summary>
+    /// The method is static mkeans its wil be thread-safe and will executed
+    /// in global scope in Broweser
+    /// JSInvokableAttribute wil be used to expose the C# method to JS 
+    /// </summary>
+    /// <returns></returns>
+    /// 
+    [JSInvokable]
+    public static Task ShowMessage()
+    {
+        return Task.FromResult<string>("I amk from C#");
+    }
+
+    /// <summary>
+    /// The 'add' will be a developer frinendly name used  by JS
+    /// </summary>
+    /// <returns></returns>
+    [JSInvokable("add")]
+    public static Task Addition(int x,int y)
+    {
+        return Task.FromResult<int>(x+y);
+    }
+
+    [JSInvokable("getProducts")]
+    public static async Task<ProductInfo[]> GetProducts()
+    {
+        HttpClient httpClient = new HttpClient();
+        var response = await httpClient.GetFromJsonAsync<ProductInfo[]>("https://apiapptrainingnewapp.azurewebsites.net/api/Products");
+        return response;
+
+    }
+
+
+
+    public class ProductInfo
+    {
+        public int ProductRowId { get; set; }
+        public string ProductId { get; set; }
+        public string ProductName { get; set; }
+        public string CategoryName { get; set; }
+        public string Manufacturer { get; set; }
+        public string Description { get; set; }
+        public int BasePrice { get; set; }
+    }
+
+
+}

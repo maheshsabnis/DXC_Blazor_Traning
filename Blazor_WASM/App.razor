@@ -1,4 +1,19 @@
-<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true">
+@*Modifying the code to support Lazy Loading*@
+@using System.Reflection
+@*Used to Inject the LazyAssemblyLoader type taht is used for lazy loading*@
+@using Microsoft.AspNetCore.Components.WebAssembly.Services
+
+@*Inject the LazyAssemblyLoader*@
+@inject LazyAssemblyLoader assemblyLazyLoader
+
+
+@*OnNavigateAsync: is a Event-Methdo that will Execute the Navigation Link Asynchropnously
+    THis is used in case of LAzy Loading*@
+@*AdditionalAssemblies: is the Collection property that will provide addition referred assebmlies those contains Blazor Components, for the current application so that then can be loaded
+    on-demand (aka lazily)*@
+<Router AppAssembly="@typeof(Program).Assembly" PreferExactMatches="@true"
+        OnNavigateAsync="OnNavigationAsync"
+        AdditionalAssemblies="lazyAssemblies">
     <Found Context="routeData">
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
     </Found>
@@ -8,3 +23,37 @@
         </LayoutView>
     </NotFound>
 </Router>
+
+@*Add code for lazy Loading of Product_LazyLoad.dll*@
+
+@code{
+    // the List of Assemblies to loaded lazily
+    private List<Assembly> lazyAssemblies = new List<Assembly>();
+
+    // NavigationContext: The class that represents the CUrrent Route Navigation
+    // Thsi will read Route Information e.g. RouteData, Parameters, Component class
+    // based on The Route path
+    private async Task OnNavigationAsync(NavigationContext context)
+    {
+        // cehck the current Navigation Path in NavLink
+        // curently this will work for fetchproducts NavLink
+        if (context.Path == "fetchproducts")
+        {
+            // load the assembly that contains componant with @page directive as fetchproducts
+            var assemblies = await assemblyLazyLoader.LoadAssembliesAsync(new[] {"Product_LazyLoad.dll"});
+            // add this in the list of Assembly that is bind with the Router
+            lazyAssemblies.AddRange(assemblies);
+
+        }
+    }
+
+}
+
+
+
+
+
+
+
+
+

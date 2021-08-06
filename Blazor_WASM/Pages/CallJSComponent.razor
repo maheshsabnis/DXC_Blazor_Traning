@@ -1,0 +1,39 @@
+﻿@page "/calljs"
+@inject IJSRuntime js
+<h3>Calling JavaScript in Blazor Component</h3>
+
+<button @onclick="@Display">Call Display() from JavaScript</button>
+<hr />
+<button  @onclick="@AddJSMethod">Call Add() from JavaScript</button>
+<br/>
+<div>
+    <strong>Result of Add from JavaScript = @Result</strong>
+</div>
+<hr />
+<button  @onclick="@GetData">Call GetProducts() from JavaScript</button>
+<hr />
+<div>
+    <strong>
+        Received Data = @data
+    </strong>
+</div>
+
+@code {
+    int Result = 0;
+    string data = "";
+    private async Task Display()
+    {
+        //  the parameter is the name of the JS method in JavaScript file
+        await js.InvokeVoidAsync("display");
+    }
+    private async Task AddJSMethod()
+    {
+        // the first parameter  is name of JS method and rest all other parameters are
+        // expected arguments by the JS method
+        Result = await js.InvokeAsync<int>("addValues", 100,200);
+    }
+    private async Task GetData()
+    {
+        data = await js.InvokeAsync<string>("getProducts");
+    }
+}

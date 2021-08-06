@@ -28,7 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Product_LazyLoad\Product_LazyLoad.csproj" />
     <ProjectReference Include="..\SharedLib\SharedLib.csproj" />
   </ItemGroup>
 
+	<ItemGroup>
+		<BlazorWebAssemblyLazyLoad Include="Product_LazyLoad.dll"></BlazorWebAssemblyLazyLoad>
+	</ItemGroup>	
 </Project>

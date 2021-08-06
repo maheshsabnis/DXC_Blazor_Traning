@@ -1,16 +1,50 @@
 ﻿@page "/counter"
-
-<h1>Counter</h1>
+@inject IJSRuntime js
+<h1>Counter and also call methods from JavaScript</h1>
 
 <p>Current count: @currentCount</p>
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<br />
+<button @onclick="@Display">Call SHowe() from JavaScript</button>
+<br />
+<button @onclick="@AddJSMethod">Call Add() from JavaScript</button>
+<br />
+<div>
+    <strong>Result of Add from JavaScript = @Result</strong>
+</div>
+<hr />
+<button @onclick="@GetData">Call GetProducts() from JavaScript</button>
+<hr />
+<div>
+    <strong>
+        Received Data = @data
+    </strong>
+</div>
 
 @code {
     private int currentCount = 0;
+    int Result = 0;
+    string data = "";
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    private async Task Display()
+    {
+        //  the parameter is the name of the JS method in JavaScript file
+        await js.InvokeVoidAsync("showMesage");
+    }
+    private async Task AddJSMethod()
+    {
+        // the first parameter  is name of JS method and rest all other parameters are
+        // expected arguments by the JS method
+        Result = await js.InvokeAsync<int>("addMethod");
+    }
+    private async Task GetData()
+    {
+        data = await js.InvokeAsync<string>("getProductsMethod");
     }
 }
