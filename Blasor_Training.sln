@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core_API", "..\..\DxcJuly20
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedLib", "SharedLib\SharedLib.csproj", "{9E8F4078-512B-4CDE-97D8-6BCEDBB9D1B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Product_LazyLoad", "Product_LazyLoad\Product_LazyLoad.csproj", "{C9E2CB3A-A802-4BFF-A3E2-3F6231E6C1BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Product_LazyLoad", "Product_LazyLoad\Product_LazyLoad.csproj", "{C9E2CB3A-A802-4BFF-A3E2-3F6231E6C1BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

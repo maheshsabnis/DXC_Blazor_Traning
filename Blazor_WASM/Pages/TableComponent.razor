@@ -1,0 +1,40 @@
+﻿@*The TModel will be used to manage the rendering of the template*@
+@typeparam TModel
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            @Headers
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in DataSource)
+        {
+            <tr>
+                @*The Row will be generated based on Data rewdceived from the parent*@
+                @**The RenderFragmant will use the Reflection PropertyInfo to read value of each property*@
+              @Rows(item)      
+            </tr>
+        }
+    </tbody>
+</table>
+ 
+@code {
+    // 1. define the FRagments for HTML Rendering
+    // THsi will be a HTML Tree that will be generated based on Data
+
+    // THis property will be used by the Component to pass data to Template 
+    // The [Parameter] pplied on RenderFRagment indicated that they will
+    // be used for Dynamic generation of HTML UI based on the Data passed by its
+    // Parent COmponent
+    [Parameter]
+    public RenderFragment Headers { get; set; }
+    [Parameter]
+    public RenderFragment<TModel> Rows { get; set; }
+    [Parameter]
+    public RenderFragment TH { get; set; }
+    [Parameter]
+    public RenderFragment TD { get; set; }
+
+    [Parameter]
+    public IEnumerable<TModel> DataSource { get; set; }
+}

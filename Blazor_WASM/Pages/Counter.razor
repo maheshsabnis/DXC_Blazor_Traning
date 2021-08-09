@@ -6,15 +6,15 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 <br />
-<button @onclick="@Display">Call SHowe() from JavaScript</button>
+<button onclick="callCSMethods.showMesage()">Call SHowe() from JavaScript</button>
 <br />
-<button @onclick="@AddJSMethod">Call Add() from JavaScript</button>
+<button onclick="callCSMethods.addMethod()">Call Add() from JavaScript</button>
 <br />
 <div>
     <strong>Result of Add from JavaScript = @Result</strong>
 </div>
 <hr />
-<button @onclick="@GetData">Call GetProducts() from JavaScript</button>
+<button onclick="callCSMethods.getProductsMethod()">Call GetProducts() from JavaScript</button>
 <hr />
 <div>
     <strong>

@@ -51,6 +51,22 @@ Right-Click-->Add-->Razor Component
 		- These packages must be registred at application level	
 	- State Management across Components w/o using browser's resources
 	- Templates for Components for reusability
+		- They are the Render Fragments used to simplify the complex component rendering
+		- USed in case when the reusable component is complex and consit of multiple HTML Tags
+		- USe RenderFragment and RenderFragment<T> types for defining Templates
+			- T is the typeparameter taht is used to accept input data to generate HTML
+		- POint of Cautions
+			- Plan a UI with Raw design
+				- Data Requirements
+				- Behavioral Requirements aka Events
+				- Logic
+			- Plan for input data that is accepted by the UI
+			- Plan what data will be emitted from the UI
+		-  While Generating a Template, we need to use RenderTemplate<T>, the T will bge the data accepted by the templates using @typeparam, this data will be used to generate the UI rendering using RenderFragment
+		- The Template also contains the '@context' property
+			- THis property provides the Reflection PropertyInfo to read each public instance property from the typeparam passed to the Template
+		- USe the Template with RenderFragment if, the component has frequent StateChanges and this may be a Rendering Overhead on UI thread on the browser because of the component  lifecycle
+			- The Template or portion (fragment) of the Templae will be replaced with only the updated value 
 	- Lazy Loading of Components
 		- The Lazy Loading is an approach where the Blazor WAMS will mark the libraries as lazyloaded so that the browser knows when to provide process for execution for all components of them
 			- Microsoft.AspNetCore.Components.WebAssembly.Services namespace which provides 
@@ -94,3 +110,18 @@ Date : 05-08-2021
 	- Modify the Department Table with the column as 'Capacity' as integer, while adding Employee in the department, if the capacity of Employees in the department is full, then generate erroir message from server and render it to client
 Date :06-08-2021
 1. From the WASM project, seperate the logic for Employee Operations by handling it in separate Razor library by creating New Employee component in it. Lazy Load this library in WAS Application
+Date : 09-08-2021
+1. Create a Template for Generating List of RedioButtons.
+	The RenderFragment will define the data-value for each RedioButton in the list
+2. Create a re-usable component that will render a CheckBoxList
+	- THis component will accept following 3 Parameters
+		 - DataSource of the type IEnumerable<T>
+		 - DataValueField, this will be the value returned by CheckBox when it is selected
+		 - DataTextField, this will be the Lable/Caption for each CheckBox
+3. MOdify the Core-API to Provide the FIle Download using Http Reqest made by the BLaozr Web Assembly client Project. 
+	- MOdify the API for FOllowing FIle Checks
+		- The Upload/Download must takes place for .jpg/.bmp/.png files
+		- The Blazor WebAssembly Project should show the Uploaded Files in the HTMl TAble as Preview
+		- The MAz Size Allowed for Upload OPeration is 15 MB
+			- The Server Must respond the error if the file size is more than 15 mb
+

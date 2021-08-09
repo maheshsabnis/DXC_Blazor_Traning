@@ -1,0 +1,27 @@
+﻿@page "/productfragment"
+@using Blazor_WASM.Models 
+
+@*The TableComponent will bereplaced using the HTML Table with is fragments*@
+<h3>Product Table Component using RenderFragment</h3>
+<TableComponent DataSource="products">
+    <!--The Headers renderfragment accepts the HTML for rendering-->
+    <Headers>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Category Id</th>
+    </Headers>
+    <Rows>
+        <td>@context.ProductId</td>
+        <td>@context.ProductName</td>
+        <td>@context.CategoryId</td>
+    </Rows>
+</TableComponent>
+@code {
+    private Products products;
+
+    protected override void OnInitialized()
+    {
+        products = new Products();
+        base.OnInitialized();
+    }
+}
