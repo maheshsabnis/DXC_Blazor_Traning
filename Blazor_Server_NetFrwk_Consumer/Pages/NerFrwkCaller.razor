@@ -1,0 +1,25 @@
+﻿@page "/netfrwkcaller"
+@using NetFrwk_Lib
+@using System.Text.Json
+<h3>Call Data Using .NET Framework 4.8 Library</h3>
+
+<div class="container">
+    <strong>
+        Received Data: @JsonSerializer.Serialize(departments)
+    </strong>
+</div>
+
+
+@code { 
+
+    private List<Department> departments;
+    protected override void OnInitialized()
+    {
+        departments = new List<Department>();
+
+        DataSource ds = new DataSource();
+        departments = ds.GetDepartments();
+
+        base.OnInitialized();
+    }
+}

@@ -84,7 +84,35 @@ Right-Click-->Add-->Razor Component
 	- UserName and Password
 	- Using Azure AD
 
-
+4. Test for the Blazor
+	- Use Case or User Stories
+	- Test Data
+	- Test Case
+	- Tests for Interactive Apps
+		- Test for Events
+		- Test for UI Updates
+	- Testing Framework suitbale for Blazor
+		- Microsoft.Net.Test.Sdk	
+			- The Test Object Model for Loading and Running the Test
+			- This is integrated with VIsual Studio
+		- MSTest.TestFramework
+			- Microsoft Unit Test FRwk
+			- BAsed on xUnit
+		- MSTest.TestAdapter
+			- The Test UI to show Statastics of Test Execution
+			- UI Panel Integrated with VIsual Studio
+			- Acts as aBridge between NUnit and Visual Studio with Projects those are using NUnit
+		- Install bunit.web  for Unit Testing for Blazor
+		- Install Moq for Mocking testing for all code that has external Depedencies
+			- e.g. Http Calls, other exterrnal object used in COmponents using Dependencies
+	- Unit Test Standard Implementation
+		- Arrange
+			- Get All Dependencies COnfigured for the Test
+		- Act
+			- Use the Dependencies for Test Execution
+			- Call method to execute the Test
+		- Assert
+			- Run the Assertion to Verify the Success of the Test
 
 
 
@@ -113,7 +141,7 @@ Date :06-08-2021
 Date : 09-08-2021
 1. Create a Template for Generating List of RedioButtons.
 	The RenderFragment will define the data-value for each RedioButton in the list
-2. Create a re-usable component that will render a CheckBoxList
+2. Create a re-usable component that will render a CheckBoxList (Optional)
 	- THis component will accept following 3 Parameters
 		 - DataSource of the type IEnumerable<T>
 		 - DataValueField, this will be the value returned by CheckBox when it is selected
@@ -124,4 +152,9 @@ Date : 09-08-2021
 		- The Blazor WebAssembly Project should show the Uploaded Files in the HTMl TAble as Preview
 		- The MAz Size Allowed for Upload OPeration is 15 MB
 			- The Server Must respond the error if the file size is more than 15 mb
+Date: 12-08-2021
+1. Write a Test for a Blazor Component, that when the Department is added by click on Save Button, the Table SHowing list of Department is added with a <tr><td> with Department Values
+	- Read the Sabe Button
+	- Call the Save() method
+	- Read the <table> with new <tr> with <td>s added in it
 
