@@ -24,25 +24,33 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFrwk_Lib", "NetFrwk_Lib\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CS_NetClient", "CS_NetClient\CS_NetClient.csproj", "{D84C597F-5B2C-42E7-ACC2-1E301171E0EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_Server_NetFrwk_Consumer", "Blazor_Server_NetFrwk_Consumer\Blazor_Server_NetFrwk_Consumer.csproj", "{DB01F5B0-6F6A-4F48-A89A-BE5218AF4ACC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_Server_NetFrwk_Consumer", "Blazor_Server_NetFrwk_Consumer\Blazor_Server_NetFrwk_Consumer.csproj", "{DB01F5B0-6F6A-4F48-A89A-BE5218AF4ACC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor_Wasm_Project", "Blazor_Wasm_Project", "{A4BB8109-7656-4829-B3CE-A6F71EAE35A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_Wasm_Using_NetFrwk_Lib", "Blazor_Wasm_Using_NetFrwk_Lib\Blazor_Wasm_Using_NetFrwk_Lib.csproj", "{8C941DA2-076E-4481-9E90-48CD4E40FC1D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_Wasm_Using_NetFrwk_Lib", "Blazor_Wasm_Using_NetFrwk_Lib\Blazor_Wasm_Using_NetFrwk_Lib.csproj", "{8C941DA2-076E-4481-9E90-48CD4E40FC1D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wasm_Hoste", "Wasm_Hoste", "{F30475BD-76AF-4582-B05F-33E7303BC61B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_Wasm_Hiosted.Server", "Blazor_Wasm_Hiosted\Server\Blazor_Wasm_Hiosted.Server.csproj", "{58C52564-1B6F-465F-BE4A-414FB3D35CF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_Wasm_Hiosted.Server", "Blazor_Wasm_Hiosted\Server\Blazor_Wasm_Hiosted.Server.csproj", "{58C52564-1B6F-465F-BE4A-414FB3D35CF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_Wasm_Hiosted.Client", "Blazor_Wasm_Hiosted\Client\Blazor_Wasm_Hiosted.Client.csproj", "{BC82CC53-FF1A-409B-85A6-4F84F0D60176}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_Wasm_Hiosted.Client", "Blazor_Wasm_Hiosted\Client\Blazor_Wasm_Hiosted.Client.csproj", "{BC82CC53-FF1A-409B-85A6-4F84F0D60176}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_Wasm_Hiosted.Shared", "Blazor_Wasm_Hiosted\Shared\Blazor_Wasm_Hiosted.Shared.csproj", "{3983901A-0F5A-4B9A-B65D-50256D62B216}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_Wasm_Hiosted.Shared", "Blazor_Wasm_Hiosted\Shared\Blazor_Wasm_Hiosted.Shared.csproj", "{3983901A-0F5A-4B9A-B65D-50256D62B216}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Blazor_Testing", "Blazor_Testing", "{562D4179-4BB0-41A0-99B5-AE87523AB543}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_AppForTest", "Blazor_AppForTest\Blazor_AppForTest.csproj", "{B47F0219-450B-4102-BCB7-CE33D4EC2B67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_AppForTest", "Blazor_AppForTest\Blazor_AppForTest.csproj", "{B47F0219-450B-4102-BCB7-CE33D4EC2B67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor_TestProject", "Blazor_TestProject\Blazor_TestProject.csproj", "{3BAE60A2-BCF1-46FC-930D-35127F29A0DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor_TestProject", "Blazor_TestProject\Blazor_TestProject.csproj", "{3BAE60A2-BCF1-46FC-930D-35127F29A0DD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APITesting", "APITesting", "{D9AAA50C-E4F2-4610-89D0-703703B8836C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APITestProject", "APITestProject\APITestProject.csproj", "{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NetCore31App", "NetCore31App", "{91387333-871F-492F-905C-B87EE8DCC51F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core_App31", "Core_App31\Core_App31.csproj", "{BEBBFC70-84CF-4FA5-B72D-273342B0AB33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +114,14 @@ Global
 		{3BAE60A2-BCF1-46FC-930D-35127F29A0DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BAE60A2-BCF1-46FC-930D-35127F29A0DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BAE60A2-BCF1-46FC-930D-35127F29A0DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBBFC70-84CF-4FA5-B72D-273342B0AB33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBBFC70-84CF-4FA5-B72D-273342B0AB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBBFC70-84CF-4FA5-B72D-273342B0AB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBBFC70-84CF-4FA5-B72D-273342B0AB33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -120,6 +136,8 @@ Global
 		{3983901A-0F5A-4B9A-B65D-50256D62B216} = {F30475BD-76AF-4582-B05F-33E7303BC61B}
 		{B47F0219-450B-4102-BCB7-CE33D4EC2B67} = {562D4179-4BB0-41A0-99B5-AE87523AB543}
 		{3BAE60A2-BCF1-46FC-930D-35127F29A0DD} = {562D4179-4BB0-41A0-99B5-AE87523AB543}
+		{F8D4DD21-FB1C-4A67-8684-5FFAC0A07851} = {D9AAA50C-E4F2-4610-89D0-703703B8836C}
+		{BEBBFC70-84CF-4FA5-B72D-273342B0AB33} = {91387333-871F-492F-905C-B87EE8DCC51F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2BFBA2F0-BDB4-430F-B32C-C30460BBC555}

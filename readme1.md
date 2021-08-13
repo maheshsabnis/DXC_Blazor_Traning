@@ -114,6 +114,47 @@ Right-Click-->Add-->Razor Component
 		- Assert
 			- Run the Assertion to Verify the Success of the Test
 
+5. Application MIgration from .NET Core 3.1 to .NET
+- Monitor the .csproj file
+	- Used by MSBuild to Generate a Dependency MAp for the Application
+	- Decide/Set the Runtime requirements for the Application
+	- Modify the CsProj file by Updating the Target Framework
+		-  <TargetFramework>net5.0</TargetFramework>
+	- Delete bin and obj folder
+		- Its is recommended to clear the nuget cache on local server to clear older version NUget PAckages to the New one [Step to be FOllowed on Production Server]
+			- dotnet nuget loccal --clear all
+6. Deployment of .NET 5 Apps
+	- On-Premises Deployment
+		- On WIndows MAchine (Windows 10 / Windows Server 2016+)
+			- Install IIS
+				- Create App Pool as No Managed Code
+				- Set AppPoolIdentity of the AppPool as LocalSystem
+				- In Database Server add a User as IIS APPPOOL\[AppPoolName]
+				- Create a Web Site for The AppPool
+				- Under Web Site Craete an Application
+				- Publish the App
+			- Install .NET 5 SDK with ASP.NET Core 5 Module v2 ASPNETCoreModuleV2
+		- On Linux Machine / Mac OSX
+			- Install .NET SDK for Linux or Mac OSX
+			- Create a Build and Copy it on these OS in Publish Folder
+			- Navigate to Publish Folder and run 'dotnet run' Command
+		- On Docker
+			- Create a Docker Image for the Project and Copy it on 
+				- Windows / Linux Machine
+				- Docker run Command
+	- On-Cloud {Lift and Shift} {On Azure}
+		- Migrate the Database on Cloud
+		- Update the Connection String of Database in appsettings.json
+		- Publish the Application using Pubish Feature of Visual Studio, on Cloud as API App 
+	- On-Cloud using Docker Image (Generally in case of Microservices)
+		- Build the Docker Image Locally
+			- docker build .
+		- Push Docker Image to Azure Container Registry (ACR)
+		- From the Dev. Maching Login on on ACR
+		- Tag the Image to ACR Name
+		- Push The Image to ACR from Dev. MAchine
+		- Deply the Image as API App on Cloud
+
 
 
 Hands-on-Tasks
